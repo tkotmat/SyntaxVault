@@ -1,10 +1,29 @@
 // src/components/Header.js
-import React from 'react';
+import React, { useState } from 'react';
+import '../styles/Header.css';
 
-function Header() {
+const Header = () => {
+
+const [menuOpen, setMenuOpen] = useState(false);
+
+const toggleMenu = () => {
+    setMenuOpen(prev => !prev);
+};
+
 return (
-<header>
-    <h1>Библиотека книг</h1>
+<header className="header">
+    <div className="burger" onClick={toggleMenu}>
+        ☰
+    </div>
+
+    <nav className={`buttons ${menuOpen ? 'active' : ''}`}>
+        <a href="#">Главная</a>
+        <a href="#">Книги</a>
+        <a href="#">О нас</a>
+        <a href="#">Контакты</a>
+    </nav>
+
+    <div className="profile">П</div>
 </header>
 );
 }
