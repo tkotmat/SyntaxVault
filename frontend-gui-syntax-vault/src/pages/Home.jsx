@@ -40,6 +40,24 @@ const books = [
     {
         imageSrc:
             "https://images-na.ssl-images-amazon.com/images/I/81YOuOGFCJL.jpg",
+        title: "Книга 1",
+        description: "Опис 1...",
+    },
+    {
+        imageSrc:
+            "https://images-na.ssl-images-amazon.com/images/I/81YOuOGFCJL.jpg",
+        title: "Книга 1",
+        description: "Опис 1...",
+    },
+    {
+        imageSrc:
+            "https://images-na.ssl-images-amazon.com/images/I/81YOuOGFCJL.jpg",
+        title: "Книга 1",
+        description: "Опис 1...",
+    },
+    {
+        imageSrc:
+            "https://images-na.ssl-images-amazon.com/images/I/81YOuOGFCJL.jpg",
         title: "Книга 2",
         description: "Опис 2...",
     },

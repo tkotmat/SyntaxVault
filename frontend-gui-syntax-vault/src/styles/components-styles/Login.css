@@ -1,0 +1,95 @@
+.login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    background-color: #e0e0e0;
+    border: 2px solid #ffffff;
+    box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.6),
+        inset -2px -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+    background: #ffffff;
+    padding: 2rem 3rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-form h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+input:focus {
+    border-color: #0077ff;
+}
+
+.error {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+    display: block;
+}
+
+button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #0077ff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #005fcc;
+}
+
+.password-input-wrapper {
+    position: relative;
+}
+
+.password-input-wrapper input {
+    padding-right: 0.5rem;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 0.7rem;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #666;
+    user-select: none;
+}
+
+.password-group {
+    position: relative;
+}

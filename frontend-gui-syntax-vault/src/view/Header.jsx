@@ -1,10 +1,13 @@
-// src/components/Header.js
 import React, { useState } from "react";
 import "../styles/components-styles/Header.css";
+import { useNavigate } from "react-router-dom";
+import BeforeAuthorization from "./under-header/BeforeMenuReg";
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
+    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setMenuOpen((prev) => !prev);
@@ -18,6 +21,14 @@ const Header = () => {
         setIsHovered(false);
     };
 
+    const handleHomeClick = () => {
+        navigate("/");
+    };
+
+    const togglePopup = () => {
+        setShowPopup((prev) => !prev);
+    };
+
     return (
         <header className='header' onMouseLeave={handleMouseLeave}>
             <div className='burger' onClick={toggleMenu}>
@@ -25,7 +36,11 @@ const Header = () => {
             </div>
 
             <nav className={`buttons ${menuOpen ? "active" : ""}`}>
-                <a href='#' onMouseEnter={handleMouseEnter}>
+                <a
+                    href='#'
+                    onMouseEnter={handleMouseEnter}
+                    onClick={handleHomeClick}
+                >
                     Главная
                 </a>
 
@@ -39,7 +54,12 @@ const Header = () => {
                 <a href='#'>О нас</a>
             </nav>
 
-            <div className='profile'>П</div>
+            <div className='profile' onClick={togglePopup}>
+                П
+                {showPopup && (
+                    <BeforeAuthorization onClose={() => setShowPopup(false)} />
+                )}
+            </div>
         </header>
     );
 };
