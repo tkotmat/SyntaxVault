@@ -73,3 +73,19 @@
         display: block;
     }
 }
+/* Добавляем стили для подменю */
+.submenu {
+    display: flex;
+}
+
+.submenu a {
+    text-decoration: none;
+    font-size: 15px;
+    color: #333;
+    padding: 5px 15px;
+    transition: color 0.3s;
+}
+
+.submenu a:hover {
+    color: #007bff;
+}

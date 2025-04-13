@@ -1,0 +1,38 @@
+.main-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+    background-color: #e0e0e0;
+    border: 2px solid #ffffff;
+    box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.6),
+        inset -2px -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.book-info {
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 30px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-shadow: inset 1px 1px 3px #fff, inset -1px -1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.book-info h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.book-info p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+}

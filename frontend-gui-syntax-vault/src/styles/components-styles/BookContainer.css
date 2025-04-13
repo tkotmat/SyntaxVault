@@ -1,0 +1,44 @@
+.book {
+    display: flex;
+    align-items: flex-start;
+    background-color: #ffffff;
+    padding: 16px;
+    margin: 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    height: 15vh;
+    transition: transform 0.2s ease;
+}
+
+.book:hover {
+    transform: translateY(-3px);
+}
+
+.textContent {
+    flex: 1;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.book-description {
+    font-size: 16px;
+    color: #666;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-clamp: 3;
+    overflow: hidden;
+}
+
+.image {
+    width: 130px;
+    height: 100%;
+    object-fit: cover;
+    margin-right: 20px;
+}
