@@ -2,15 +2,15 @@
 {
     public class BookModels
     {
-        public Guid Id { get; set; }
-        public string Title { get; set; } = string.Empty;
+        public Guid id { get; set; }
+        public string title { get; set; } = string.Empty;
 
-        public string Genre { get; set; } = string.Empty;
+        public string genre { get; set; } = string.Empty;
 
-        public string Author { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
+        public string author { get; set; } = string.Empty;
+        public string description { get; set; } = string.Empty;
 
-        public string PdfUrl { get; set; } = string.Empty;
+        public string pdfUrl { get; set; } = string.Empty;
 
     }
 }

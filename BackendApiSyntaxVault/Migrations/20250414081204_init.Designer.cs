@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BackendApiSyntaxVault.Migrations
 {
     [DbContext(typeof(ApiAppContextDB))]
-    [Migration("20250411173400_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250414081204_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,133 +27,133 @@ namespace BackendApiSyntaxVault.Migrations
 
             modelBuilder.Entity("BackendApiSyntaxVault.Models.BookModels", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("Author")
+                    b.Property<string>("author")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("description")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Genre")
+                    b.Property<string>("genre")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("PdfUrl")
+                    b.Property<string>("pdfUrl")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("title")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("book");
                 });
 
             modelBuilder.Entity("BackendApiSyntaxVault.Models.CommentModels", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
 
-                    b.Property<int>("BookId")
+                    b.Property<int>("bookId")
                         .HasColumnType("integer");
 
-                    b.Property<Guid?>("BookId1")
+                    b.Property<Guid?>("bookid")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("Text")
+                    b.Property<string>("text")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("UserId")
+                    b.Property<int>("userId")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
-                    b.HasIndex("BookId1");
+                    b.HasIndex("bookid");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("userId");
 
                     b.ToTable("Comment");
                 });
 
             modelBuilder.Entity("BackendApiSyntaxVault.Models.FileUrlBookModels", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
 
-                    b.Property<string>("FileName")
+                    b.Property<string>("fileName")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("FilePath")
+                    b.Property<string>("filePath")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("FileType")
+                    b.Property<string>("fileType")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("file");
                 });
 
             modelBuilder.Entity("BackendApiSyntaxVault.Models.UserModels", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Username")
+                    b.Property<string>("email")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<bool>("isAdmin")
                         .HasColumnType("boolean");
 
-                    b.HasKey("Id");
+                    b.Property<string>("password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("username")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("id");
 
                     b.ToTable("user");
                 });
 
             modelBuilder.Entity("BackendApiSyntaxVault.Models.CommentModels", b =>
                 {
-                    b.HasOne("BackendApiSyntaxVault.Models.BookModels", "Book")
+                    b.HasOne("BackendApiSyntaxVault.Models.BookModels", "book")
                         .WithMany()
-                        .HasForeignKey("BookId1");
+                        .HasForeignKey("bookid");
 
-                    b.HasOne("BackendApiSyntaxVault.Models.UserModels", "User")
+                    b.HasOne("BackendApiSyntaxVault.Models.UserModels", "user")
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("userId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Book");
+                    b.Navigation("book");
 
-                    b.Navigation("User");
+                    b.Navigation("user");
                 });
 #pragma warning restore 612, 618
         }

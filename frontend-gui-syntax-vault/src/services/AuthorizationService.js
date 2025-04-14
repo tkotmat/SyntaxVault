@@ -1,8 +1,8 @@
-const API_URL = ""; // Заміни на свій API
+const API_URL = "https://localhost:7227/api/userApi"; // Заміни на свій API
 
 export const AuthService = {
     async register(username, email, password) {
-        const response = await fetch(`${API_URL}/register`, {
+        const response = await fetch(API_URL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

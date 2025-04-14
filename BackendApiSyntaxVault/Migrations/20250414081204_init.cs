@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BackendApiSyntaxVault.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,85 +16,85 @@ namespace BackendApiSyntaxVault.Migrations
                 name: "book",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Title = table.Column<string>(type: "text", nullable: false),
-                    Genre = table.Column<string>(type: "text", nullable: false),
-                    Author = table.Column<string>(type: "text", nullable: false),
-                    Description = table.Column<string>(type: "text", nullable: false),
-                    PdfUrl = table.Column<string>(type: "text", nullable: false)
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    title = table.Column<string>(type: "text", nullable: false),
+                    genre = table.Column<string>(type: "text", nullable: false),
+                    author = table.Column<string>(type: "text", nullable: false),
+                    description = table.Column<string>(type: "text", nullable: false),
+                    pdfUrl = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_book", x => x.Id);
+                    table.PrimaryKey("PK_book", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "file",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    FileName = table.Column<string>(type: "text", nullable: false),
-                    FilePath = table.Column<string>(type: "text", nullable: false),
-                    FileType = table.Column<string>(type: "text", nullable: false)
+                    fileName = table.Column<string>(type: "text", nullable: false),
+                    filePath = table.Column<string>(type: "text", nullable: false),
+                    fileType = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_file", x => x.Id);
+                    table.PrimaryKey("PK_file", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "user",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Username = table.Column<string>(type: "text", nullable: false),
-                    Email = table.Column<string>(type: "text", nullable: false),
-                    PasswordHash = table.Column<string>(type: "text", nullable: false),
+                    username = table.Column<string>(type: "text", nullable: false),
+                    email = table.Column<string>(type: "text", nullable: false),
+                    password = table.Column<string>(type: "text", nullable: false),
                     isAdmin = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_user", x => x.Id);
+                    table.PrimaryKey("PK_user", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Comment",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    BookId = table.Column<int>(type: "integer", nullable: false),
-                    BookId1 = table.Column<Guid>(type: "uuid", nullable: true),
-                    UserId = table.Column<int>(type: "integer", nullable: false),
-                    Text = table.Column<string>(type: "text", nullable: false)
+                    bookId = table.Column<int>(type: "integer", nullable: false),
+                    bookid = table.Column<Guid>(type: "uuid", nullable: true),
+                    userId = table.Column<int>(type: "integer", nullable: false),
+                    text = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Comment", x => x.Id);
+                    table.PrimaryKey("PK_Comment", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Comment_book_BookId1",
-                        column: x => x.BookId1,
+                        name: "FK_Comment_book_bookid",
+                        column: x => x.bookid,
                         principalTable: "book",
-                        principalColumn: "Id");
+                        principalColumn: "id");
                     table.ForeignKey(
-                        name: "FK_Comment_user_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Comment_user_userId",
+                        column: x => x.userId,
                         principalTable: "user",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comment_BookId1",
+                name: "IX_Comment_bookid",
                 table: "Comment",
-                column: "BookId1");
+                column: "bookid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comment_UserId",
+                name: "IX_Comment_userId",
                 table: "Comment",
-                column: "UserId");
+                column: "userId");
         }
 
         /// <inheritdoc />

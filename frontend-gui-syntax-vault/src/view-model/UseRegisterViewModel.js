@@ -51,7 +51,7 @@ export const UseRegisterViewModel = () => {
                 formData.email,
                 formData.password
             );
-            const userModel = new UserModel(data.user);
+            const userModel = new UserModel(data);
             localStorage.setItem("token", data.token);
             setUser(userModel);
         } catch (err) {

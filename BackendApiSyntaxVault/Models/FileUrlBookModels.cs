@@ -2,9 +2,9 @@
 {
     public class FileUrlBookModels
     {
-        public int Id { get; set; }
-        public string FileName { get; set; } = string.Empty;
-        public string FilePath { get; set; } = string.Empty;
-        public string FileType { get; set; } = string.Empty;
+        public int id { get; set; }
+        public string fileName { get; set; } = string.Empty;
+        public string filePath { get; set; } = string.Empty;
+        public string fileType { get; set; } = string.Empty;
     }
 }

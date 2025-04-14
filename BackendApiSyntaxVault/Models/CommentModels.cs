@@ -2,11 +2,11 @@
 {
     public class CommentModels
     {
-        public int Id { get; set; }
-        public int BookId { get; set; }
-        public BookModels? Book { get; set; }
-        public int UserId { get; set; }
-        public UserModels? User { get; set; }
-        public string Text { get; set; } = string.Empty;
+        public int id { get; set; }
+        public int bookId { get; set; }
+        public BookModels? book { get; set; }
+        public int userId { get; set; }
+        public UserModels? user { get; set; }
+        public string text { get; set; } = string.Empty;
     }
 }

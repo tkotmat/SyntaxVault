@@ -2,10 +2,10 @@
 {
     public class UserModels
     {
-        public int Id { get; set; }
-        public string Username { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
-        public string PasswordHash { get; set; } = string.Empty;
-        public bool isAdmin { get; set; }
+        public int id { get; set; }
+        public string username { get; set; } = string.Empty;
+        public string email { get; set; } = string.Empty;
+        public string password { get; set; } = string.Empty;
+        public bool isAdmin { get; set; } = false;
     }
 }
