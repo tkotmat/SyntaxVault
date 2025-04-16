@@ -2,12 +2,10 @@ import { useState } from "react";
 import { AuthService } from "../services/AuthorizationService";
 import UserModel from "../model/UserModel";
 
-export const UseRegisterViewModel = () => {
+export const UseLoginViewModel = () => {
     const [formData, setFormData] = useState({
-        username: "",
         email: "",
         password: "",
-        confirmPassword: "",
     });
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
@@ -22,19 +20,17 @@ export const UseRegisterViewModel = () => {
         const newErrors = {};
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        if (!formData.username.trim())
-            newErrors.username = "Username is required.";
-        if (!emailRegex.test(formData.email))
-            newErrors.email = "Invalid email.";
-        if (formData.password.length < 6)
+        if (!emailRegex.test(formData.email)) {
+            newErrors.email = "Enter a valid email.";
+        }
+        if (formData.password.length < 6) {
             newErrors.password = "Password must be at least 6 characters.";
-        if (formData.password !== formData.confirmPassword)
-            newErrors.confirmPassword = "Passwords do not match.";
+        }
 
         return newErrors;
     };
 
-    const register = async () => {
+    const login = async () => {
         setLoading(true);
         setErrors({});
 
@@ -46,18 +42,16 @@ export const UseRegisterViewModel = () => {
         }
 
         try {
-            const data = await AuthService.register(
-                formData.username,
+            const data = await AuthService.login(
                 formData.email,
                 formData.password
             );
             const userModel = new UserModel(data);
             localStorage.setItem("token", data.token);
-            console.log(data);
-            console.log(data.token);
             setUser(userModel);
+            console.log(data);
         } catch (err) {
-            setErrors({ general: "Registration failed: " + err.message });
+            setErrors({ general: "Login failed: " + err.message });
         } finally {
             setLoading(false);
         }
@@ -67,8 +61,10 @@ export const UseRegisterViewModel = () => {
         formData,
         errors,
         handleChange,
-        register,
+        login,
         loading,
         user,
     };
 };
+
+export default UseLoginViewModel;

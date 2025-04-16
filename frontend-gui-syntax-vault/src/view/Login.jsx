@@ -1,43 +1,15 @@
 import React, { useState } from "react";
 import "../styles/components-styles/Login.css";
+import { UseLoginViewModel } from "../view-model/UseLoginViewModel";
 
 const Login = () => {
-    const [formData, setFormData] = useState({
-        email: "",
-        password: "",
-    });
-    const [errors, setErrors] = useState({});
+    const { formData, errors, handleChange, login, loading, user } =
+        UseLoginViewModel();
     const [showPassword, setShowPassword] = useState(false);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
-
-    const validate = () => {
-        const newErrors = {};
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (!emailRegex.test(formData.email)) {
-            newErrors.email = "Enter a valid email.";
-        }
-        if (formData.password.length < 6) {
-            newErrors.password = "Password must be at least 6 characters.";
-        }
-
-        return newErrors;
-    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const validationErrors = validate();
-        if (Object.keys(validationErrors).length > 0) {
-            setErrors(validationErrors);
-            return;
-        }
-        setErrors({});
-        console.log("Login successful:", formData);
-        // Add actual login logic here
+        login();
     };
 
     return (
@@ -81,8 +53,20 @@ const Login = () => {
                         )}
                     </div>
 
-                    <button type='submit'>Login</button>
+                    {errors.general && (
+                        <span className='error'>{errors.general}</span>
+                    )}
+
+                    <button type='submit' disabled={loading}>
+                        {loading ? "Logging in..." : "Login"}
+                    </button>
                 </form>
+
+                {user && (
+                    <div className='token-display'>
+                        <p>Token: {localStorage.getItem("token")}</p>
+                    </div>
+                )}
             </div>
         </div>
     );

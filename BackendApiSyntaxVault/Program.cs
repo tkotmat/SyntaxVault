@@ -1,9 +1,14 @@
 using BackendApiSyntaxVault.ContextDB;
+using BackendApiSyntaxVault.Repository.Interface;
+using BackendApiSyntaxVault.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+builder.Services.AddScoped<IAddUserSystem, AddUserSystem>();
+builder.Services.AddScoped<IUserIdentification, UserIdentification>();
 
 builder.Services.AddControllers();
 
@@ -12,7 +17,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend",
         policy =>
         {
-            policy.WithOrigins("http://localhost:3002") // адреса твого фронтенду
+            policy.WithOrigins("*")
                   .AllowAnyMethod()
                   .AllowAnyHeader();
         });

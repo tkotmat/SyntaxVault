@@ -4,6 +4,7 @@ import Header from "../view/Header";
 import BookContainer from "../view/BookContainer";
 
 const Home = () => {
+    console.log(localStorage.getItem("token"));
     return (
         <>
             <Header />
