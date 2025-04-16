@@ -1,0 +1,91 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+    position: relative;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.burger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.buttons a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #333;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+.buttons a:hover {
+    color: #007bff;
+}
+
+.profile {
+    width: 40px;
+    height: 40px;
+    background-color: #007bff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.profile:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .buttons {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        background-color: #f4f4f4;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+
+    .buttons.active {
+        display: flex;
+    }
+
+    .burger {
+        display: block;
+    }
+}
+/* Добавляем стили для подменю */
+.submenu {
+    display: flex;
+}
+
+.submenu a {
+    text-decoration: none;
+    font-size: 15px;
+    color: #333;
+    padding: 5px 15px;
+    transition: color 0.3s;
+}
+
+.submenu a:hover {
+    color: #007bff;
+}
