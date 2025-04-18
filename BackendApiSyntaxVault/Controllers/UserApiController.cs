@@ -3,7 +3,6 @@ using BackendApiSyntaxVault.Repository;
 using BackendApiSyntaxVault.Repository.Interface;
 using BackendApiSyntaxVault.TemporaryModelStorage;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace BackendApiSyntaxVault.Controllers
 {
@@ -51,7 +50,6 @@ namespace BackendApiSyntaxVault.Controllers
                 return BadRequest("Email and password are required.");
             }
 
-            // Знайти користувача за email
             var user = await userIdentification.CheckEmailFromDatabase<UserModels>(userModel.email);
 
             if (user == null)
@@ -59,14 +57,11 @@ namespace BackendApiSyntaxVault.Controllers
                 return Unauthorized("Invalid email or password.");
             }
 
-            // Перевірка пароля (додати тут свою логіку для перевірки пароля)
-            // Це просто приклад, заміни на свою логіку для порівняння паролів
             if (user.password != userModel.password)
             {
                 return Unauthorized("Invalid email or password.");
             }
 
-            // Токен можна згенерувати тут (наприклад, за допомогою JWT)
             string token = userIdentification.GetToken();
 
             var storageUserAndToken = new StorageUserAndToken

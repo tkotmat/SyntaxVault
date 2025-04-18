@@ -12,5 +12,8 @@
 
         public string pdfUrl { get; set; } = string.Empty;
 
+        public string FileType { get; set; } = string.Empty;
+        public string FileBase64 { get; set; } = string.Empty;
+
     }
 }
